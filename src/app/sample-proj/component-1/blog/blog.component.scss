@@ -1,0 +1,54 @@
+.rk-blog {
+  background-color: #f5d04e;
+  min-height: 100vh;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 1020px;
+  }
+
+  &__search {
+    font-size: 1.2rem;
+    border: none;
+    width: 100%;
+    max-width: 600px;
+    height: 42px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &:focus-visible {
+        outline: none;
+    }
+  }
+
+  &__search-container {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    height: 42px;
+  }
+
+  &__favorites-only {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    label {
+        font-size: 0.9rem;
+        font-weight: 400;
+    }
+  }
+
+}

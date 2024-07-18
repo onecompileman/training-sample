@@ -1,0 +1,326 @@
+<div class="rk-sign-up">
+  <div class="card p-3">
+    <form [formGroup]="signUpForm">
+      <div class="card-body">
+        <h5 class="card-title">Sign Up</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">
+          Please fill in this form to create an account!
+        </h6>
+        <div class="row mt-4">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="First Name"
+              formControlName="firstName"
+            />
+            <div
+              class="d-flex flex-column rk-sign-up__error"
+              *ngIf="
+                signUpForm.get('firstName').touched &&
+                signUpForm.get('firstName').errors
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="signUpForm.get('firstName').errors['required']"
+              >
+                First Name is required
+              </small>
+              <small
+                class="text-danger"
+                *ngIf="signUpForm.get('firstName').errors['minlength']"
+              >
+                First Name must have atleast 2 characters
+              </small>
+              <small
+                class="text-danger"
+                *ngIf="signUpForm.get('firstName').errors['maxlength']"
+              >
+                First Name must not exceed 200 characters
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Last Name"
+              formControlName="lastName"
+            />
+            <div
+              class="d-flex flex-column rk-sign-up__error"
+              *ngIf="
+                signUpForm.get('lastName').touched &&
+                signUpForm.get('lastName').errors
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="signUpForm.get('lastName').errors['required']"
+              >
+                Last Name is required
+              </small>
+              <small
+                class="text-danger"
+                *ngIf="signUpForm.get('lastName').errors['minlength']"
+              >
+                Last Name must have atleast 2 characters
+              </small>
+              <small
+                class="text-danger"
+                *ngIf="signUpForm.get('lastName').errors['maxlength']"
+              >
+                Last Name must not exceed 200 characters
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Email"
+              name="emailAddress"
+              formControlName="email"
+            />
+            <div
+              class="d-flex flex-column rk-sign-up__error"
+              *ngIf="
+                signUpForm.get('email').touched &&
+                signUpForm.get('email').errors
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="signUpForm.get('email').errors['required']"
+              >
+                Email is required
+              </small>
+              <small
+                class="text-danger"
+                *ngIf="signUpForm.get('email').errors['email']"
+              >
+                Email must be a valid email address
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col d-flex flex-column">
+            <label for="">Are you a student or professional?</label>
+
+            <div class="d-flex">
+              <div class="rk-sign-up__type" [class.rk-sign-up__type--active]="signUpForm.get('type').value === 'student'" (click)="changeType('student')">
+                <fa-icon [icon]="['fas', 'book']"></fa-icon>
+                <span class="ms-2">Student</span>
+              </div>
+              <div class="rk-sign-up__type ms-3" [class.rk-sign-up__type--active]="signUpForm.get('type').value === 'professional'" (click)="changeType('professional')">
+                <fa-icon [icon]="['fas', 'user-tie']"></fa-icon>
+                <span class="ms-2">Professional</span>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+        <div class="row mt-3" *ngIf="signUpForm.get('type').value === 'professional'">
+            <div class="col d-flex flex-column">
+              <div class="d-flex align-items-center">
+                <label for="">Please list your skillset and expertise  (<i>3 minimum</i> )</label> 
+                <button (click)="addSkill()" class="btn btn-sm btn-primary ms-2">+</button>
+              </div>
+              <div class="d-flex flex-column">
+                <rk-skills-form class="mt-2" *ngFor="let item of skillsControls; let i = index;" [form]="item" [enableDelete]="i > 2" (delete)="removeSkill(i)"></rk-skills-form>
+              </div>
+             
+            </div>
+          </div>
+          <hr>
+        <div class="row mt-3">
+          <div class="col">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              name="password"
+              formControlName="password"
+            />
+
+            <div
+              class="d-flex flex-column rk-sign-up__error"
+              *ngIf="signUpForm.get('password').dirty"
+            >
+              <div class="d-flex align-items-center">
+                <fa-icon
+                  *ngIf="
+                    !(
+                      signUpForm.get('password').errors &&
+                      (signUpForm.get('password').errors['minlength'] ||
+                        signUpForm.get('password').errors['required'])
+                    )
+                  "
+                  [icon]="['fas', 'check']"
+                  class="text-success"
+                ></fa-icon>
+                <fa-icon
+                  *ngIf="
+                    signUpForm.get('password').errors &&
+                    (signUpForm.get('password').errors['minlength'] ||
+                      signUpForm.get('password').errors['required'])
+                  "
+                  [icon]="['fas', 'circle-xmark']"
+                  class="text-danger"
+                ></fa-icon>
+                <small class="ms-2">
+                  Password must have atleast 8 characters
+                </small>
+              </div>
+              <div class="d-flex align-items-center">
+                <fa-icon
+                  *ngIf="
+                    !(
+                      signUpForm.get('password').errors &&
+                      signUpForm.get('password').errors['lowercase']
+                    )
+                  "
+                  [icon]="['fas', 'check']"
+                  class="text-success"
+                ></fa-icon>
+                <fa-icon
+                  *ngIf="
+                    signUpForm.get('password').errors &&
+                    signUpForm.get('password').errors['lowercase']
+                  "
+                  [icon]="['fas', 'circle-xmark']"
+                  class="text-danger"
+                ></fa-icon>
+                <small class="ms-2">
+                  Password must have atleast 1 lowercase character
+                </small>
+              </div>
+              <div class="d-flex align-items-center">
+                <fa-icon
+                  *ngIf="
+                    !(
+                      signUpForm.get('password').errors &&
+                      signUpForm.get('password').errors['uppercase']
+                    )
+                  "
+                  [icon]="['fas', 'check']"
+                  class="text-success"
+                ></fa-icon>
+                <fa-icon
+                  *ngIf="
+                    signUpForm.get('password').errors &&
+                    signUpForm.get('password').errors['uppercase']
+                  "
+                  [icon]="['fas', 'circle-xmark']"
+                  class="text-danger"
+                ></fa-icon>
+                <small class="ms-2">
+                  Password must have atleast 1 uppercase character
+                </small>
+              </div>
+              <div class="d-flex align-items-center">
+                <fa-icon
+                  *ngIf="
+                    !(
+                      signUpForm.get('password').errors &&
+                      signUpForm.get('password').errors['numeric']
+                    )
+                  "
+                  [icon]="['fas', 'check']"
+                  class="text-success"
+                ></fa-icon>
+                <fa-icon
+                  *ngIf="
+                    signUpForm.get('password').errors &&
+                    signUpForm.get('password').errors['numeric']
+                  "
+                  [icon]="['fas', 'circle-xmark']"
+                  class="text-danger"
+                ></fa-icon>
+                <small class="ms-2">
+                  Password must have atleast 1 numeric character
+                </small>
+              </div>
+              <div class="d-flex align-items-center">
+                <fa-icon
+                  *ngIf="
+                    !(
+                      signUpForm.get('password').errors &&
+                      signUpForm.get('password').errors['special']
+                    )
+                  "
+                  [icon]="['fas', 'check']"
+                  class="text-success"
+                ></fa-icon>
+                <fa-icon
+                  *ngIf="
+                    signUpForm.get('password').errors &&
+                    signUpForm.get('password').errors['special']
+                  "
+                  [icon]="['fas', 'circle-xmark']"
+                  class="text-danger"
+                ></fa-icon>
+                <small class="ms-2">
+                  Password must have atleast 1 special character
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Confirm Password"
+              formControlName="confirmPassword"
+            />
+            <div
+              class="d-flex flex-column rk-sign-up__error"
+              *ngIf="
+                signUpForm.get('confirmPassword').touched &&
+                signUpForm.errors &&
+                signUpForm.errors['passwordMismatch']
+              "
+            >
+              <small class="text-danger"> Password must match </small>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="accept"
+                [(ngModel)]="acceptTerms"
+                [ngModelOptions]="{ standalone: true }"
+              />
+              <label class="form-check-label" for="accept">
+                <small>
+                  I accept the <b>Term of Use</b> & <b>Privacy Policy</b>
+                </small>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button
+          (click)="signUp()"
+          [disabled]="!signUpForm.valid"
+          class="btn btn-primary mt-3 rk-sign-up__sign-up"
+        >
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

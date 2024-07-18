@@ -1,0 +1,43 @@
+.rk-sign-up {
+  background: rgb(34, 195, 185);
+  background: linear-gradient(
+    45deg,
+    rgba(34, 195, 185, 1) 0%,
+    rgba(45, 147, 254, 1) 100%
+  );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__sign-up {
+    width: 200px;
+    border-radius: 0;
+  }
+
+  &__type {
+    background-color: #f5f5f5;
+    width: 150px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &--active {
+        background-color: #25AFF3;
+        color: white;
+    }
+  }
+  
+  &__error {
+    padding: 3px;
+    small {
+        font-size: 11px;
+    }
+  }
+
+  .card {
+    min-width: 550px;
+  }
+}
+

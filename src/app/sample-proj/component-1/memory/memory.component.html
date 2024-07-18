@@ -1,0 +1,22 @@
+<div class="rk-memory">
+  <div class="rk-memory__header">
+    <h1 class="rk-memory__header-title">memory</h1>
+
+    <button (click)="restart()" class="rk-memory__header-restart">Restart</button>
+  </div>
+
+  <div class="rk-memory__game">
+    <rk-memory-item *ngFor="let tile of tiles" [tile]="tile" (open)="openTile(tile)"></rk-memory-item>
+  </div>
+
+  <div class="rk-memory__footer">
+    <div class="rk-memory__time">
+      <span>Time</span>
+      <b>{{ time * 1000 | date : 'mm:ss' }}</b>
+    </div>
+    <div class="rk-memory__moves">
+      <span>Moves</span>
+      <b>{{ moves }}</b>
+    </div>
+  </div>
+</div>

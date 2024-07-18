@@ -1,0 +1,111 @@
+.rk-blog {
+    &__item {
+        position: relative;
+        margin: 20px;
+        width: 300px;
+        background-color: white;
+        border-radius: 15px;
+        border: 1px solid black;
+        box-shadow: 10px 10px 0 black;
+        padding: 20px;
+
+       
+    }
+
+    &__item-favorite {
+        font-size: 1.2rem;
+        // padding: 3px 8px;
+        margin-right: 5px;
+        border-radius: 100%;
+        // position: absolute;
+        // top: 0px;
+        // left: -5px;
+        cursor: pointer;
+        &--favorited {
+            color:#F5D04E;
+        }        
+    }
+
+    :host ::ng-deep &__highlight {
+        background-color: #F5D04E;
+    }
+
+    &__item-title-container {
+        display: flex;
+        align-items: center;
+    }
+
+    &__item-header {
+        height: 150px;
+        width: 100%;
+        border-radius: 10px;
+        background-color: #AAA;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-size: cover;
+        background-position: center;
+
+        &--danger {
+            background-color: #E84033;
+        }
+    }
+
+
+    &__item-tags {
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    &__item-tag {
+        background-color: #F5D04E;
+        color: black;
+        font-weight: bold;
+        padding: 5px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+    }
+
+    &__item-date {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 0.75rem;
+    }
+
+    &__item-remove-btn {
+        background-color: #E43D30;
+        color: white;
+        font-size: 1rem;
+        padding: 1px 8px;
+        border-radius: 100%;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        cursor: pointer;
+    }
+
+    &__item-title {
+        font-weight: bolder;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin-bottom: 0;
+
+        &--visited {
+            color:purple;
+        }
+    }
+
+    &__item-description {
+        color: #A5A5A5;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-size: 0.8rem;
+        line-height: 1.2rem;
+    }
+
+    &__item-author {
+        font-weight: bold;
+    }
+}

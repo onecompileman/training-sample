@@ -1,0 +1,65 @@
+.rk-memory {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__header-title {
+    color: #1a2833;
+  }
+
+  &__header-restart {
+    background-color: #fba211;
+    color: #f5feff;
+    padding: 9px 32px;
+    font-size: 16px;
+    border-radius: 20px;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__game {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+  }
+
+  
+  &__footer {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  &__time,
+  &__moves {
+    margin: 10px;
+    width: 250px;
+    height: 64px;
+    background-color: #dfe6ec;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    border-radius: 10px;
+    align-items: center;
+    padding: 20px;
+    span {
+      color: #758b9b;
+      font-weight: bold;
+    }
+
+    b {
+      font-weight: bolder;
+      font-size: 24px;
+    }
+  }
+}

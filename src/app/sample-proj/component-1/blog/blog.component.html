@@ -1,0 +1,30 @@
+<div class="rk-blog">
+  <div class="rk-blog__search-container">
+    <input
+      type="search"
+      class="rk-blog__search"
+      placeholder="Search for title, tags, description"
+      [(ngModel)]="searchTerm"
+    />
+    <div class="rk-blog__favorites-only">
+      <input type="checkbox" [(ngModel)]="favoritesOnly"/>
+      <label class="ms-1" for="">Favorites only</label>
+    </div>
+    <div class="rk-blog__favorites-only">
+        <input type="checkbox" [(ngModel)]="visitedOnly"/>
+        <label class="ms-1" for="">Visited only</label>
+      </div>
+  </div>
+
+  <div class="rk-blog__container">
+    <rk-blog-item
+      *ngFor="
+        let blog of blogs | filterBlogItem : searchTerm : favoritesOnly : visitedOnly;
+        trackBy: blogTrackBy
+      "
+      [blog]="blog"
+      [highlightTerm]="searchTerm"
+      (onRemove)="removeBlog(blog)"
+    ></rk-blog-item>
+  </div>
+</div>

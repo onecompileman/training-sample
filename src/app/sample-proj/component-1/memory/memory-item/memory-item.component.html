@@ -1,0 +1,13 @@
+
+<div class="rk-memory__game-tile" (click)="onOpen()">
+    <div
+      class="rk-memory__game-tile-inner"
+      [class.rk-memory__game-tile-inner--open]="tile.status === memoryTileStatus.OPEN"
+      [class.rk-memory__game-tile-inner--matched]="tile.status === memoryTileStatus.MATCHED"
+    >
+      <div class="rk-memory__game-tile-front"></div>
+      <div class="rk-memory__game-tile-back">
+        <fa-icon [icon]="['fas', tile.icon]"></fa-icon>
+      </div>
+    </div>
+</div>

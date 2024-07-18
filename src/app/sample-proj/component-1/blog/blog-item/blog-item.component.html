@@ -1,0 +1,41 @@
+<div class="rk-blog__item rk-blog__item--visited">
+  <div (click)="remove()" class="rk-blog__item-remove-btn">x</div>
+  <div
+    class="rk-blog__item-header"
+    [ngStyle]="{ backgroundImage: 'url(' + blog?.headlineImageUrl + ')' }"
+  ></div>
+  <div class="rk-blog__item-body">
+    <div class="rk-blog__item-tags">
+      <label class="rk-blog__item-tag">
+        {{ blog?.tag }}
+      </label>
+    </div>
+    <span class="rk-blog__item-date"> Published {{ blog?.date }} </span>
+
+    <div class="rk-blog__item-title-container">
+      <div
+        class="rk-blog__item-favorite"
+        [class.rk-blog__item-favorite--favorited]="blog?.favorite"
+        (click)="toggleFavorite()"
+      >
+        <fa-icon *ngIf="blog?.favorite" [icon]="['fas', 'star']"></fa-icon>
+        <fa-icon *ngIf="!blog?.favorite" [icon]="['far', 'star']"></fa-icon>
+      </div>
+      <h3
+        class="rk-blog__item-title"
+        [class.rk-blog__item-title--visited]="blog?.visited"
+        (click)="visitLink()"
+      >
+        {{ blog?.title }}
+      </h3>
+    </div>
+
+    <p class="rk-blog__item-description" [innerHTML]="highlightedDescription">
+     
+    </p>
+
+    <span class="rk-blog__item-author">
+      {{ blog?.author }}
+    </span>
+  </div>
+</div>
